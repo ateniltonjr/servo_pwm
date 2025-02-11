@@ -38,10 +38,10 @@ Este projeto tem como objetivo simular o controle do ângulo de um servomotor ut
   - Rotina periódica para movimentação suave entre 0° e 180°.
 
 ## Resultados 📊
-- O comportamento esperado do servomotor foi alcançado conforme os requisitos.
+- O comportamento esperado do servomotor foi alcançado conforme os requisitos exigidos, como mostrado no vídeo de demonstração e no código, em si.
 - O LED RGB conectado à GPIO 12 teve seu brilho fixo nos primeiros 5 segundos, teve uma pequena variação e se manteve fixa durante 5 segundos, apos 15 segundos de execução o brilho passou a variar constantimente durante os testes com a ferramenta BitDogLab.
 
 ## Vídeo Ensaio 📝
-O vídeo de simulação do servo motor e o experimento com o led RGB podem ser visualizados aqui: [YouTube](###).
+O vídeo de simulação do servo motor e o experimento com o led RGB podem ser visualizados aqui: [YouTube](https://youtu.be/-EfTO3VKYeI).
 
 ---
