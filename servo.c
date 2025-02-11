@@ -34,34 +34,32 @@ void servo_config() {  // Configura o servo para operar com PWM
 }
 
 void movimentos() {  // Realiza movimentos predefinidos com o servo
+    
+    sleep_ms(100); // Atraso para referência de onde o servo começa
+
+    /* Definição do ciclo ativo de 2.400 µs para posicionar o servomotor
+     a aproximadamente 180 graus, com uma espera de 5 segundos.*/
     uart_puts(uart0, "Posição: 180°\r\n");  // Envia mensagem via UART
-    posicao(calcula_pulso(0));  // Move o servo para 180°
+    posicao(calcula_pulso(180));  // Move o servo para 180°
     sleep_ms(5000);  // Aguarda 5 segundos
 
+    /*Ajuste do ciclo ativo para 1.470 µs, posicionando o servo a
+     aproximadamente 90 graus, com outra espera de 5 segundos.*/
     uart_puts(uart0, "Posição: 90°\r\n");  // Envia mensagem via UART
     posicao(calcula_pulso(90));  // Move o servo para 90°
     sleep_ms(5000);  // Aguarda 5 segundos
 
+    /*Definição do ciclo ativo de 500 µs, movendo o servo para 0 graus,
+     aguardando mais 5 segundos.*/
     uart_puts(uart0, "Posição: 0°\r\n");  // Envia mensagem via UART
-    posicao(calcula_pulso(180));  // Move o servo para 0°
+    posicao(calcula_pulso(0));  // Move o servo para 0°
     sleep_ms(5000);  // Aguarda 5 segundos
 
     uart_puts(uart0, "Movimento suave entre 0° e 180°\r\n");  // Envia mensagem via UART
 }
 
-void servo_loop() {  // Realiza um loop de movimentação suave do servo
-    for (uint16_t angulo = 180; angulo > 0; angulo--) {  // De 180° até 0°
-        posicao(calcula_pulso(angulo));  // Define a posição do servo
-        sleep_ms(10);  // Aguarda 10 ms
-    }
-
-    for (uint16_t angulo = 0; angulo <= 180; angulo++) {  // De 0° até 180°
-        posicao(calcula_pulso(angulo));  // Define a posição do servo
-        sleep_ms(10);  // Aguarda 10 ms
-    }
-}
-
-// Incremento de ciclo ativo de ±5µs, com um atraso de ajuste de 10ms
+/*Implementação de uma rotina suave para movimentação periódica entre 0 e 180 graus,
+ com incrementos de ±5 µs e atraso de 10 ms.*/
 void servo_movimento_periodico() {  // Rotina de movimentação periódica suave
     while (true) {  // Loop infinito para movimentação constante
         for (uint16_t ciclo = 500; ciclo <= 2400; ciclo += 5) {  // Incremento suave de ciclo ativo

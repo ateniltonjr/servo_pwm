@@ -17,6 +17,6 @@ uint16_t calcula_pulso(uint16_t angulo);
 void posicao(uint16_t pulse_us);
 void servo_config();
 void movimentos();
-void servo_loop();
+void servo_movimento_periodico();
 
 #endif

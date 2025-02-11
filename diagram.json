@@ -1,41 +1,39 @@
 {
-    "version": 1,
-    "author": "Atenilton Júnior",
-    "editor": "wokwi",
-    "parts": [
-      { "type": "board-pi-pico-w", "id": "pico", "top": 111.95, "left": -82.85, "attrs": {} },
-      {
-        "type": "wokwi-servo",
-        "id": "servo1",
-        "top": 123.8,
-        "left": 1.8,
-        "rotate": 270,
-        "attrs": { "color": "red" }
-      },
-      { "type": "wokwi-vcc", "id": "vcc1", "top": 296.64, "left": 67.4, "rotate": 180, "attrs": {} },
-      { "type": "wokwi-gnd", "id": "gnd1", "top": 288, "left": 95.4, "attrs": {} },
-      {
-        "type": "wokwi-text",
-        "id": "text1",
-        "top": 67.2,
-        "left": 28.8,
-        "attrs": { "text": "SERVO MOTOR" }
-      },
-      { "type": "wokwi-logo", "id": "logo1", "top": 86.4, "left": -211.2, "attrs": {} },
-      {
-        "type": "wokwi-text",
-        "id": "text2",
-        "top": 105.6,
-        "left": -220.8,
-        "attrs": { "text": "Atenilton Júnior" }
-      }
-    ],
-    "connections": [
-      [ "pico:GP0", "$serialMonitor:RX", "", [] ],
-      [ "pico:GP1", "$serialMonitor:TX", "", [] ],
-      [ "servo1:GND", "gnd1:GND", "black", [ "h0" ] ],
-      [ "vcc1:VCC", "servo1:V+", "red", [ "v0" ] ],
-      [ "pico:GP22", "servo1:PWM", "gray", [ "h57.91", "v48", "h48" ] ]
-    ],
-    "dependencies": {}
-  }
+  "version": 1,
+  "author": "Atenilton Júnior",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-pi-pico-w", "id": "pico", "top": 111.95, "left": -82.85, "attrs": {} },
+    {
+      "type": "wokwi-servo",
+      "id": "servo1",
+      "top": 123.8,
+      "left": 11.4,
+      "rotate": 270,
+      "attrs": { "color": "red" }
+    },
+    { "type": "wokwi-vcc", "id": "vcc1", "top": 296.64, "left": 86.6, "rotate": 180, "attrs": {} },
+    { "type": "wokwi-gnd", "id": "gnd1", "top": 288, "left": 114.6, "attrs": {} },
+    { "type": "wokwi-rgb-led", "id": "rgb1", "top": 157.6, "left": -142.9, "attrs": {} },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 235.2,
+      "left": -134.95,
+      "rotate": 90,
+      "attrs": { "value": "330" }
+    },
+    { "type": "wokwi-gnd", "id": "gnd2", "top": 220.8, "left": -135, "attrs": {} }
+  ],
+  "connections": [
+    [ "pico:GP0", "$serialMonitor:RX", "", [] ],
+    [ "pico:GP1", "$serialMonitor:TX", "", [] ],
+    [ "servo1:GND", "gnd1:GND", "black", [ "h0" ] ],
+    [ "vcc1:VCC", "servo1:V+", "red", [ "v0" ] ],
+    [ "pico:GP22", "servo1:PWM", "gray", [ "h57.91", "v-131.6" ] ],
+    [ "pico:GP12", "r1:2", "blue", [ "h0" ] ],
+    [ "rgb1:B", "r1:1", "blue", [ "v0" ] ],
+    [ "gnd2:GND", "rgb1:COM", "black", [ "v0" ] ]
+  ],
+  "dependencies": {}
+}
