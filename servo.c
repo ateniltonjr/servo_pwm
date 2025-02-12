@@ -1,10 +1,10 @@
-#include "servo.h"  // Biblioteca para controle do servo motor
-#include "hardware/pwm.h"  // Biblioteca para controle de PWM
-#include "pico/stdlib.h"  // Biblioteca padrão da Raspberry Pi Pico
-#include <stdio.h>  // Biblioteca para funções de entrada e saída
+#include "hardware/pwm.h" // Biblioteca para controle de PWM
+#include "pico/stdlib.h" // Biblioteca padrão da Raspberry Pi Pico
+#include <stdio.h>      // Biblioteca para funções de entrada e saída
+#include "servo.h"     // Biblioteca para controle do servo motor
 
 // Variáveis globais
-uint slice_num;  // Variável para armazenar o número do slice PWM
+uint slice_num; // Variável para armazenar o número do slice PWM
 uint channel;  // Variável para armazenar o canal PWM
 
 void uart_config() {  // Função para configurar a UART
@@ -34,8 +34,6 @@ void servo_config() {  // Configura o servo para operar com PWM
 }
 
 void movimentos() {  // Realiza movimentos predefinidos com o servo
-    
-    sleep_ms(100); // Atraso para referência de onde o servo começa
 
     /* Definição do ciclo ativo de 2.400 µs para posicionar o servomotor
      a aproximadamente 180 graus, com uma espera de 5 segundos.*/
@@ -63,11 +61,11 @@ void movimentos() {  // Realiza movimentos predefinidos com o servo
 void servo_movimento_periodico() {  // Rotina de movimentação periódica suave
     while (true) {  // Loop infinito para movimentação constante
         for (uint16_t ciclo = 500; ciclo <= 2400; ciclo += 5) {  // Incremento suave de ciclo ativo
-            posicao(ciclo);  // Define a posição do servo
+            posicao(ciclo); // Define a posição do servo
             sleep_ms(10);  // Atraso de ajuste de 10 ms
         }
         for (uint16_t ciclo = 2400; ciclo >= 500; ciclo -= 5) {  // Decremento suave de ciclo ativo
-            posicao(ciclo);  // Define a posição do servo
+            posicao(ciclo); // Define a posição do servo
             sleep_ms(10);  // Atraso de ajuste de 10 ms
         }
                 }

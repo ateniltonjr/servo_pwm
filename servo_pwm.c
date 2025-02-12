@@ -10,6 +10,6 @@ int main() {
     servo_config();  // Habilita a configuração do servo
     movimentos();   // Realiza os primeiros movimentos fixos do servo
 
-    while (true) { servo_movimento_periodico(); }
+    while (true) { servo_movimento_periodico(); } // Implementação da função que estará no loop
     return 0;  // Este ponto nunca será alcançado
 }
